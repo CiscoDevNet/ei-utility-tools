@@ -1,0 +1,11 @@
+- DEVICE_IP: 10.105.58.120:9001
+  PIPELINE_NAME: p001
+  DATA_SOURCE_FILE: data_source_1.json
+  DATA_LOGIC_FILE: data_logic_1.json
+  DATA_TARGET_FILE: data_target_1.json
+  DATA_VARIABLES_FILE: data_vars_1.json
+- DEVICE_IP: 10.105.58.120:9002
+  PIPELINE_NAME: p002
+  DATA_SOURCE_FILE: data_source_1.json
+  DATA_TARGET_FILE: data_target_1.json
+  DATA_VARIABLES_FILE: data_vars_1.json

@@ -1,0 +1,44 @@
+{
+  "dataTarget": {
+    "type": "MQTT",
+    "dataTargetConfiguration": {
+      "connectors": [
+        {
+          "host": "10.106.11.8",
+          "port": 1884,
+          "secure": false,
+          "verifyPeer": false,
+          "mqttQoS": "$MQTT_QOS",
+          "clientId": "12344567_3fcbaece-ce1b-428b-995e-2b0319710180",
+          "cleanSession": "$CLEAN_SESSION",
+          "username": "test_user@cisco.com",
+          "password": "Welcome@12345",
+          "publish": {
+            "resultPath": {
+              "mqttRetain": true,
+              "mqttQos": "$MQTT_QOS",
+              "mqttTopic": "cisco/edge-intelligence/telemetry/12344567"
+            }
+          }
+        }
+      ]
+    },
+    "downSampling": {
+      "update_interval": 1000
+    }
+  },
+  "outputModel": {
+    "test": {
+      "addTimestamp": false,
+      "emit": true,
+      "targetPath": "test",
+      "type": "STRING"
+    },
+    "test2": {
+      "addTimestamp": false,
+      "emit": true,
+      "targetPath": "test2",
+      "type": "STRING"
+    }
+  }
+}
