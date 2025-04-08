@@ -1,0 +1,144 @@
+{
+  "name": "pipeline-template-datalogic",
+  "data": {
+    "dataSources": {
+      "mqtt1": {
+        "type": "MQTT",
+        "assetId": "1234",
+        "dataSourceConfiguration": {
+          "port": null,
+          "secure": false,
+          "useWebSockets": false,
+          "clientId": "test",
+          "assetId": "1234",
+          "name": "endpoint_1883",
+          "endpoints": [
+            {
+              "clientId": "test",
+              "port": "1883",
+              "credentials": [
+                {
+                  "username": "gogopals@cisco.com",
+                  "password": "10000:KusMo5cIWx/tkKNKeeDfWg==:+z5Pjl3JkNgqLje+Hl+xDnhG7jEL04/F0LyAyIY1KO3avuZn8n8k/+2xchX9s6ty/W4azkJbb1nnflUaeh4YCg=="
+                }
+              ],
+              "name": "endpoint_1883",
+              "metrics": {
+                "test": {
+                  "name": "test",
+                  "label": "test",
+                  "datatype": "String",
+                  "topic": "test_topic"
+                },
+                "test2": {
+                  "name": "test2",
+                  "label": "test2",
+                  "datatype": "String",
+                  "topic": "test_topic2"
+                }
+              },
+              "secure": false,
+              "privateKey": null,
+              "serverCertificate": null
+            }
+          ]
+        },
+        "fields": [
+          {
+            "type": "subscription",
+            "key": "test",
+            "source": "/endpoints/endpoint_1883/test/test_topic"
+          },
+          {
+            "type": "subscription",
+            "key": "test2",
+            "source": "/endpoints/endpoint_1883/test/test_topic2"
+          },
+          {
+            "type": "customAttribute",
+            "key": "custom1",
+            "value": "test_custome_value"
+          }
+        ]
+      },
+      "mqtt2": {
+        "type": "MQTT",
+        "assetId": "4567",
+        "dataSourceConfiguration": {
+          "port": null,
+          "secure": false,
+          "useWebSockets": false,
+          "clientId": "gg-mclient-2",
+          "assetId": "4567",
+          "name": "endpoint_1883",
+          "endpoints": [
+            {
+              "clientId": "gg-mclient-2",
+              "port": "1883",
+              "credentials": [
+                {
+                  "username": "gogopals@cisco.com",
+                  "password": "10000:AZhjbaVaNp7imy7ZYvVRRQ==:d/pMLrrCfUKuJbTbKUgplumM0THVvJjZD5s6Mw0nhx4z+vptlTp4glkV5j57l7p1tIJFDpOq/V9q+nU5jPXKzQ=="
+                }
+              ],
+              "name": "endpoint_1883",
+              "metrics": {
+                "test2": {
+                  "name": "test2",
+                  "label": "test",
+                  "datatype": "String",
+                  "topic": "test_topic2"
+                }
+              },
+              "secure": false,
+              "privateKey": null,
+              "serverCertificate": null
+            }
+          ]
+        },
+        "fields": [
+          {
+            "type": "subscription",
+            "key": "test2",
+            "source": "/endpoints/endpoint_1883/gg-mclient-2/test_topic2"
+          }
+        ]
+      }
+    },
+    "dataTarget": {
+      "type": "MQTT",
+      "dataTargetConfiguration": {
+        "connectors": [
+          {
+            "host": "$TARGET_HOST",
+            "port": 1884,
+            "secure": false,
+            "verifyPeer": false,
+            "mqttQoS": 1,
+            "clientId": "12344567_3fcbaece-ce1b-428b-995e-2b0319710180",
+            "cleanSession": true,
+            "username": "gogopals@cisco.com",
+            "password": "Welcome@12345",
+            "publish": {
+              "resultPath": {
+                "mqttRetain": true,
+                "mqttQos": 1,
+                "mqttTopic": "cisco/edge-intelligence/telemetry/12344567"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "outputModel": {},
+    "scriptedDataLogic": {
+      "enableCloudCommands": false,
+      "parameters": {
+        "INVOKE_ON_NEW_DATA": null
+      },
+      "productive": true,
+      "script": "\u001bbytes:LyoqIFRoaXMgaXMgdGhlIG1hbmRhdG9yeSBmdW5jdGlvbiB0aGF0IGVhY2ggRUkgZGF0YSBsb2dpYyBtdXN0IGltcGxlbWVudAogKiAgU3RhcnQgb2YgRUkgRGF0YSBMb2dpYyovCi8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8KCmZ1bmN0aW9uIG9uX3VwZGF0ZSgpIHsKICAKICBwdWJsaXNoKCJvdXRwdXQiLCAidGVzdCIpOwp9CgovKipFbmQgb2YgRURNIGRhdGEgbG9naWMgKi8KCmZ1bmN0aW9uIG9uX3RpbWVfdHJpZ2dlcigpIHsKICBsb2dnZXIuaW5mbygib25fdGltZV90cmlnZ2VyKysrKyB0aW1lc3RhbXAgPSAiICsgbmV3IERhdGUoKSk7IAogcHVibGlzaCgib3V0cHV0IiwgInRlc3QiKTsKfQo=",
+      "invokeEvery": 1000
+    }
+  }
+}

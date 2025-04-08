@@ -1,0 +1,11 @@
+{
+  "scriptedDataLogic": {
+    "enableCloudCommands": false,
+    "parameters": {
+      "INVOKE_ON_NEW_DATA": null
+    },
+    "productive": true,
+    "script": "\u001bbytes:LyoqIFRoaXMgaXMgdGhlIG1hbmRhdG9yeSBmdW5jdGlvbiB0aGF0IGVhY2ggRUkgZGF0YSBsb2dpYyBtdXN0IGltcGxlbWVudAogKiAgU3RhcnQgb2YgRUkgRGF0YSBMb2dpYyovCi8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8vLy8KCmZ1bmN0aW9uIG9uX3VwZGF0ZSgpIHsKICAKICBwdWJsaXNoKCJvdXRwdXQiLCAidGVzdCIpOwp9CgovKipFbmQgb2YgRURNIGRhdGEgbG9naWMgKi8KCmZ1bmN0aW9uIG9uX3RpbWVfdHJpZ2dlcigpIHsKICBsb2dnZXIuaW5mbygib25fdGltZV90cmlnZ2VyKysrKyB0aW1lc3RhbXAgPSAiICsgbmV3IERhdGUoKSk7IAogcHVibGlzaCgib3V0cHV0IiwgInRlc3QiKTsKfQo=",
+    "invokeEvery": "$INVOKE_INTERVAL"
+  }
+}
