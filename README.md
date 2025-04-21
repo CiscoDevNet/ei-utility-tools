@@ -8,10 +8,9 @@ This repo contains tools related to EI Local Manager
 - Active Internet access is essential to download this repository.
 
 ## Checkout Repository
-- Create a directory to checkout this repository
 ```
-git checkout -b ei-utility-tools git@github.com:CiscoDevNet/ei-utility-tools.git
-``
+git clone git@github.com:CiscoDevNet/ei-utility-tools.git
+```
 
 ## To build the package
 ```bash
