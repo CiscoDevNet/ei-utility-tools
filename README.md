@@ -1,24 +1,33 @@
-# EI Utility Tools
+# EI Utility Tools (eilm-cli)
 
 This repo contains tools related to EI Local Manager 
 
-## EI Local Manager CLI Tool (eilm-cli)
+## Prerequisite
+- Python release 3.10 or later is required on your system.
+- To use the CLI tool, make sure that python bin folder is available to the system path.
+- Active Internet access is essential to download this repository.
 
-### To build the package
+## Checkout Repository
+- Create a directory to checkout this repository
+```
+git checkout -b ei-utility-tools git@github.com:CiscoDevNet/ei-utility-tools.git
+``
+
+## To build the package
 ```bash
 cd ei-utility-tools
 python3 setup.py sdist bdist_wheel
 ```
 
-### To install the package
+## To install the package
 ```bash
 cd ei-utility-tools/dist
 pip install eilm-cli-1.1.0.tar.gz
 ```
 
-### Initialize and configure eilm-cli 
+## Initialize and configure eilm-cli 
 
-#### Set the Environment Variable EI_CLI_HOME
+### Set the Environment Variable EI_CLI_HOME
 Create a directory (for example, “eilm-cli” under home folder) which we want to use as EI_CLI_HOME and set the path to environment variable EI_CLI_HOME
 ```commandline
 export EI_CLI_HOME=<path_to_eilm_home_dir>
@@ -30,7 +39,7 @@ export EI_CLI_HOME=/home/user/eilm-cli
 ```
 
 
-#### For Windows PowerShell
+### For Windows PowerShell
 
 ```commandline
 $env:EI_CLI_HOME="<path_to_eilm_home_dir>"
@@ -48,7 +57,7 @@ PS C:\Users\Administrator>
 
 Note: (Ensure the path is always enclosed in double quotes; otherwise, it will throw an error.)
 
-#### For Windows CMD
+### For Windows CMD
 
 >set EI_CLI_HOME="<path_to_eilm_home_dir>"
 
@@ -65,7 +74,7 @@ C:\Users\Administrator> echo %EI_CLI_HOME%
 C:\Users\Administrator>
 ```
 
-### Initialize Configurations
+## Initialize Configurations
 
 Run the initialization command to generate a configuration folder and sample configuration files
 
@@ -109,14 +118,14 @@ options:
   -h, --help            show this help message and exit
 ```
 
-### Create the Pipeline Inventory File
-#### Step 1
+## Create the Pipeline Inventory File
+### Step 1
 The user needs to create a pipeline inventory file under the configs folder. This file will contain all the required configuration (like device info, configuration, etc) for the pipeline to be deployed. 
 Before creating the pipeline inventory file, the user also needs to create few configuration files which will be used in the pipeline-inventory file described in Step 2
 
 > cd <ei_cli_home>/configs
 
-#### Step 2 
+### Step 2 
 Below are the required individual configuration files for the pipeline (data_source, data_logic, data_target, and data_variables). Please refer to the sample configuration files, which will be used in the pipeline inventory file
 
 pipeline_template : This is a JSON file which contains the data source, destination, pipeline configuration. actually this could be a file exported from EI that can be used as template to deploy on other EI agents.
@@ -455,7 +464,7 @@ data_vars : This is a JSON file which contains the template variable configurati
 ```
 Note: The configuration provided above is a sample and may vary based on the specific pipeline configuration and use case. To obtain the exact configuration for a pipeline, please refer to the export pipeline functionality available in the Ei LM UI
 
-#### Step 3
+### Step 3
 Create a pipeline configuration YAML file (inventory.yaml) using the data config files created in Step 2. 
 This helps the user reuse the data configuration files in and for multiple pipeline deployments. 
 To deploy / undeploy / status, the pipeline inventory file needs to be passed to the eilm-cli utility along with device credentials as shown below. (Refer Section 4 for more details on the commands supported.)
@@ -492,10 +501,10 @@ Sample Inventory.yml file below
 ```
 Note: For single pipeline deployment on a single device, the inventory file will have only one entry.
 
-### Using eilm-cli Utility
+## Using eilm-cli Utility
 Note : Please note that the basic assumption is that the password for all the devices used in the pipeline-inventory.yaml file is the same. 
 
-#### Change  Password
+### Change  Password
 The user can in bulk change the password for all the devices configured in the inventory file using the following command. 
 
 ```
@@ -520,7 +529,7 @@ Finished changing password on device 10.105.58.120:9002 Status: Success
 ```
 This step generates a log file in the EI_CLI_HOME directory, e.g., change_pwd_<timestamp>.log.
 
-#### Pipeline Operations
+### Pipeline Operations
 Below are the primary pipeline commands supported, and each command will ask for a password when executed. (Please note password should be same for all the devices used in the inventory file)
 
 1. Deploy a Template:
@@ -609,17 +618,17 @@ For additional command details, refer to the help command
 
 *This script is used to manage docker containers by providing options to start, stop or check the status of running EI Utility Containers. It allows you to specify the number of containers to start or stop and maps container ports dynamically based on user input.*
 
-#### Features
+### Features
 * **Start Containers:** Start a specified number of containers using a custom image and environment variables.
 * **Stop Containers:** Stop a specified number of running containers or stop all of them.
 * **Check Status:** Display how many containers are currently running.
 * **Port Mapping:** Automatically map container ports starting from a base external port.
 
-#### Prerequisites
+### Prerequisites
 * Docker installed and running.
 * Sufficient resources (memory, CPU) to run multiple containers.
 
-#### Variables
+### Variables
 |Variable Name	|Description |
 |---------------|------------|
 |SERVICE_NAME	|Descriptive name of the service (in this case, "EI Utility Containers").
@@ -633,8 +642,8 @@ For additional command details, refer to the help command
 |NAME_OF_CONTAINERS_RUNNING	|Name of latest running containers.
 |START_CONTAINERS_COUNT	|Name counter for the containers, used to uniquely name them when creating.
 
-#### Usage
-#### Start Containers
+## Usage
+### Start Containers
 * To start a specified number of containers:
 
 ```bash
@@ -644,7 +653,7 @@ For example, to start 5 containers:
 ```bash
 sh ei-scale-utility.sh start 5
 ```
-#### Stop Containers
+### Stop Containers
 
 * To stop a specified number of containers:
 
@@ -661,7 +670,7 @@ sh ei-scale-utility.sh stop 5
 ```bash
 sh ei-scale-utility.sh stop all
 ```
-#### Check Status
+### Check Status
 * To check the status of running containers:
 
 ```bash
@@ -669,7 +678,7 @@ sh ei-scale-utility.sh status
 ```
 This will display the number of containers currently running.
 
-#### Error Handling
+### Error Handling
 If the required arguments are not provided for the start or stop commands, the script will display an error message like this:
 
 ```bash
@@ -679,7 +688,7 @@ Exp:- sh ei-scale-utility.sh start 10|20
 
 Similarly, when stopping containers, the script will ensure that the number of containers provided is not greater than the number of currently running containers.
 
-#### Example
+### Example
 Starting 3 containers with the default configuration:
 
 ```bash
@@ -697,6 +706,6 @@ Checking the status of containers:
 ```bash
 sh ei-scale-utility.sh status
 ```
-#### Notes
+## Notes
 * The script dynamically assigns external ports starting from the base port 9000. Each new container will map the next available port, incrementing by 1.
 * Ensure you have sufficient resources to run the specified number of containers, especially when using a high number.
